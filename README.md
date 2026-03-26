@@ -1,0 +1,1 @@
+# lampang-area2-analyze
