@@ -9,7 +9,7 @@ for file in files:
     with open(file, 'r') as f:
         lines = [line.strip() for line in f if line.strip()]
     with open(temp_file, 'w') as f_write:
-        if "(บช)" in file.stem:
+        if "(บช)" in file.stem or "บช" in file.stem:
             o = 3
         else:
             o = 1
