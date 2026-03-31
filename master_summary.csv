@@ -1,1 +1,1 @@
-type,province,district,sub-district,unit_number,total_ballots,valid_ballots,invalid_ballots,no_vote_ballots
+type,province,district,sub-district,unit_number,total_ballots,valid_ballots,invalid_ballots,no_vote_ballots,remain_ballots
