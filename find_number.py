@@ -8,6 +8,7 @@ with open('election-stations-2569.json', 'r', encoding='utf-8') as f:
 rayong = next((p for p in data['provinces'] if p['name'] == 'ระยอง'), None)
 # print(f"ระยอง {rayong['total_stations']} หน่วยเลือกตั้ง")
 d = dict()
+t = 0
 # หาหน่วยเลือกตั้งจากรหัส
 def find_total_station(area,province):
     for p in data['provinces']:
@@ -25,3 +26,10 @@ def find_total_station(area,province):
 
 find_total_station(2, 'ลำปาง')
 print(d)
+for k, v in d.items():
+    for e, g in v.items():
+        t+=g
+print(t)
+
+# บ้านโป่ง 11 เขต
+# 
