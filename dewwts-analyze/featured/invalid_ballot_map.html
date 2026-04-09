@@ -1,0 +1,2983 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_488aa40255522574bfed59ecf27a1ab1 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position:fixed;bottom:40px;left:40px;z-index:1000;background:white;
+     padding:12px 16px;border-radius:8px;box-shadow:2px 2px 8px rgba(0,0,0,0.3);
+     font-family:sans-serif;font-size:13px;line-height:1.8;">
+  <b>อัตราบัตรเสีย</b><br>
+  <span style="display:inline-block;width:14px;height:14px;background:#c0392b;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>≥8% — วิกฤต<br>
+  <span style="display:inline-block;width:14px;height:14px;background:#e74c3c;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>6–8% — สูง<br>
+  <span style="display:inline-block;width:14px;height:14px;background:#f39c12;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>4–6% — ปานกลาง<br>
+  <span style="display:inline-block;width:14px;height:14px;background:#f1c40f;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>2–4% — ต่ำ<br>
+  <span style="display:inline-block;width:14px;height:14px;background:#2ecc71;border-radius:50%;margin-right:6px;vertical-align:middle;"></span>&lt;2% — ดีมาก
+</div>
+    
+            <div class="folium-map" id="map_488aa40255522574bfed59ecf27a1ab1" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_488aa40255522574bfed59ecf27a1ab1 = L.map(
+                "map_488aa40255522574bfed59ecf27a1ab1",
+                {
+                    center: [18.809336304740746, 99.67158706692521],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0b8d789b09af2f48c930e7d6e39db5f0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0b8d789b09af2f48c930e7d6e39db5f0.addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+            var circle_marker_b150ce0c80d2d570eaa554f071dfaec7 = L.circleMarker(
+                [18.553226645, 100.011741948],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_797d94e0fc55e6cafbc3bcd87fbe076c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9277f9e00b87bc3923bfc4b41038e8f3 = $(`<div id="html_9277f9e00b87bc3923bfc4b41038e8f3" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,320<br>บัตรเสีย: 54 (4.09%)<br>งดออกเสียง: 19 (1.44%)</div>`)[0];
+                popup_797d94e0fc55e6cafbc3bcd87fbe076c.setContent(html_9277f9e00b87bc3923bfc4b41038e8f3);
+            
+        
+
+        circle_marker_b150ce0c80d2d570eaa554f071dfaec7.bindPopup(popup_797d94e0fc55e6cafbc3bcd87fbe076c)
+        ;
+
+        
+    
+    
+            circle_marker_b150ce0c80d2d570eaa554f071dfaec7.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.09%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef4a49e36d71e6a7f695e47c46dbece8 = L.circleMarker(
+                [18.599695076, 100.032754859],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_f4f0ee715d470804294b07acfe63287e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_adc158d81ad3b7f5663a463326571447 = $(`<div id="html_adc158d81ad3b7f5663a463326571447" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,040<br>บัตรเสีย: 28 (2.69%)<br>งดออกเสียง: 13 (1.25%)</div>`)[0];
+                popup_f4f0ee715d470804294b07acfe63287e.setContent(html_adc158d81ad3b7f5663a463326571447);
+            
+        
+
+        circle_marker_ef4a49e36d71e6a7f695e47c46dbece8.bindPopup(popup_f4f0ee715d470804294b07acfe63287e)
+        ;
+
+        
+    
+    
+            circle_marker_ef4a49e36d71e6a7f695e47c46dbece8.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 2.69%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f01baf321a28f4fdb3878adf971ca2a = L.circleMarker(
+                [18.6084847, 99.9043567],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_1e42528a8d276b63d1f7ab6669364c2f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2a22b46021ee65504c942bb1fdbddb87 = $(`<div id="html_2a22b46021ee65504c942bb1fdbddb87" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,240<br>บัตรเสีย: 58 (4.68%)<br>งดออกเสียง: 13 (1.05%)</div>`)[0];
+                popup_1e42528a8d276b63d1f7ab6669364c2f.setContent(html_2a22b46021ee65504c942bb1fdbddb87);
+            
+        
+
+        circle_marker_9f01baf321a28f4fdb3878adf971ca2a.bindPopup(popup_1e42528a8d276b63d1f7ab6669364c2f)
+        ;
+
+        
+    
+    
+            circle_marker_9f01baf321a28f4fdb3878adf971ca2a.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.68%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8252caa5094036754b5439cfbffffa00 = L.circleMarker(
+                [18.613166321, 100.03668231],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_7610a559ed762872bc9b05ae5b70cb9a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bfce3bf40c18aef5ba40cdc3b67c9414 = $(`<div id="html_bfce3bf40c18aef5ba40cdc3b67c9414" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 4<br>บัตรทั้งหมด: 3,480<br>บัตรเสีย: 131 (3.76%)<br>งดออกเสียง: 60 (1.72%)</div>`)[0];
+                popup_7610a559ed762872bc9b05ae5b70cb9a.setContent(html_bfce3bf40c18aef5ba40cdc3b67c9414);
+            
+        
+
+        circle_marker_8252caa5094036754b5439cfbffffa00.bindPopup(popup_7610a559ed762872bc9b05ae5b70cb9a)
+        ;
+
+        
+    
+    
+            circle_marker_8252caa5094036754b5439cfbffffa00.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.76%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a09dd313c5457b7926453c95a60aeee = L.circleMarker(
+                [18.616152188, 100.041142173],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_ff94c7712b4bf8aa9e06172dc984e87b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6a1602df997d4e197abe5880f5deb371 = $(`<div id="html_6a1602df997d4e197abe5880f5deb371" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 920<br>บัตรเสีย: 37 (4.02%)<br>งดออกเสียง: 13 (1.41%)</div>`)[0];
+                popup_ff94c7712b4bf8aa9e06172dc984e87b.setContent(html_6a1602df997d4e197abe5880f5deb371);
+            
+        
+
+        circle_marker_6a09dd313c5457b7926453c95a60aeee.bindPopup(popup_ff94c7712b4bf8aa9e06172dc984e87b)
+        ;
+
+        
+    
+    
+            circle_marker_6a09dd313c5457b7926453c95a60aeee.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.02%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_06e79e878b4453968ff2ca0ecf3821d3 = L.circleMarker(
+                [18.680245284, 99.932964365],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_46ea1f0d4098d98f3742fa1ded55b086 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ae15a58411958812ad284af8ce800135 = $(`<div id="html_ae15a58411958812ad284af8ce800135" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 6<br>บัตรทั้งหมด: 6,080<br>บัตรเสีย: 284 (4.67%)<br>งดออกเสียง: 123 (2.02%)</div>`)[0];
+                popup_46ea1f0d4098d98f3742fa1ded55b086.setContent(html_ae15a58411958812ad284af8ce800135);
+            
+        
+
+        circle_marker_06e79e878b4453968ff2ca0ecf3821d3.bindPopup(popup_46ea1f0d4098d98f3742fa1ded55b086)
+        ;
+
+        
+    
+    
+            circle_marker_06e79e878b4453968ff2ca0ecf3821d3.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.67%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbe35f48563653dc54e1e854aab33e8e = L.circleMarker(
+                [18.715089103, 99.938774312],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9e78120bc518414d5dce4d3a25f02781 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f7945d15a98a05527006a4581aa10fdd = $(`<div id="html_f7945d15a98a05527006a4581aa10fdd" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 12<br>บัตรทั้งหมด: 10,160<br>บัตรเสีย: 466 (4.59%)<br>งดออกเสียง: 200 (1.97%)</div>`)[0];
+                popup_9e78120bc518414d5dce4d3a25f02781.setContent(html_f7945d15a98a05527006a4581aa10fdd);
+            
+        
+
+        circle_marker_fbe35f48563653dc54e1e854aab33e8e.bindPopup(popup_9e78120bc518414d5dce4d3a25f02781)
+        ;
+
+        
+    
+    
+            circle_marker_fbe35f48563653dc54e1e854aab33e8e.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.59%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4a8afe480c628ff7c58dbc51c7aa83ba = L.circleMarker(
+                [18.734239064, 99.970909836],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_2f9d097c93ebf5b589a13d8111cf1916 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c8baed1c048151583ade01567e4aaf55 = $(`<div id="html_c8baed1c048151583ade01567e4aaf55" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 7,000<br>บัตรเสีย: 258 (3.69%)<br>งดออกเสียง: 122 (1.74%)</div>`)[0];
+                popup_2f9d097c93ebf5b589a13d8111cf1916.setContent(html_c8baed1c048151583ade01567e4aaf55);
+            
+        
+
+        circle_marker_4a8afe480c628ff7c58dbc51c7aa83ba.bindPopup(popup_2f9d097c93ebf5b589a13d8111cf1916)
+        ;
+
+        
+    
+    
+            circle_marker_4a8afe480c628ff7c58dbc51c7aa83ba.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.69%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1068b01cead0ae110800f8db075ad05d = L.circleMarker(
+                [18.748556397, 99.977056729],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_53f15b4f6ee5f4b09265b39b4edfaee2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_61c14b39e567c4bacaca85403f96868f = $(`<div id="html_61c14b39e567c4bacaca85403f96868f" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,480<br>บัตรเสีย: 60 (4.05%)<br>งดออกเสียง: 40 (2.7%)</div>`)[0];
+                popup_53f15b4f6ee5f4b09265b39b4edfaee2.setContent(html_61c14b39e567c4bacaca85403f96868f);
+            
+        
+
+        circle_marker_1068b01cead0ae110800f8db075ad05d.bindPopup(popup_53f15b4f6ee5f4b09265b39b4edfaee2)
+        ;
+
+        
+    
+    
+            circle_marker_1068b01cead0ae110800f8db075ad05d.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.05%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_982781ec5cf07a6cdfe0265cd357ce97 = L.circleMarker(
+                [18.749443771947, 100.031145442139],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_880f96cbcd8d0f460d69922c05ee85c9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2fba049647dfe07aea20feb6898bee17 = $(`<div id="html_2fba049647dfe07aea20feb6898bee17" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,040<br>บัตรเสีย: 76 (7.31%)<br>งดออกเสียง: 34 (3.27%)</div>`)[0];
+                popup_880f96cbcd8d0f460d69922c05ee85c9.setContent(html_2fba049647dfe07aea20feb6898bee17);
+            
+        
+
+        circle_marker_982781ec5cf07a6cdfe0265cd357ce97.bindPopup(popup_880f96cbcd8d0f460d69922c05ee85c9)
+        ;
+
+        
+    
+    
+            circle_marker_982781ec5cf07a6cdfe0265cd357ce97.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 7.31%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9081fd8cf0f2720d4ac8a094b714a35a = L.circleMarker(
+                [18.753231493, 99.982452267],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_5a458cec6de0780c0f385d19b758fddb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4dbd7f2030d5976fb8663de4338f2bfc = $(`<div id="html_4dbd7f2030d5976fb8663de4338f2bfc" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 6,440<br>บัตรเสีย: 211 (3.28%)<br>งดออกเสียง: 195 (3.03%)</div>`)[0];
+                popup_5a458cec6de0780c0f385d19b758fddb.setContent(html_4dbd7f2030d5976fb8663de4338f2bfc);
+            
+        
+
+        circle_marker_9081fd8cf0f2720d4ac8a094b714a35a.bindPopup(popup_5a458cec6de0780c0f385d19b758fddb)
+        ;
+
+        
+    
+    
+            circle_marker_9081fd8cf0f2720d4ac8a094b714a35a.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.28%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a4fb9b2fea318eef3138d041488dee5c = L.circleMarker(
+                [18.758150844, 99.913989941],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_27e8287f4d2306640d9fa4916a750a6b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a4ebab4a6d3ccff24ab50fa0b84623ad = $(`<div id="html_a4ebab4a6d3ccff24ab50fa0b84623ad" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 840<br>บัตรเสีย: 47 (5.6%)<br>งดออกเสียง: 10 (1.19%)</div>`)[0];
+                popup_27e8287f4d2306640d9fa4916a750a6b.setContent(html_a4ebab4a6d3ccff24ab50fa0b84623ad);
+            
+        
+
+        circle_marker_a4fb9b2fea318eef3138d041488dee5c.bindPopup(popup_27e8287f4d2306640d9fa4916a750a6b)
+        ;
+
+        
+    
+    
+            circle_marker_a4fb9b2fea318eef3138d041488dee5c.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 5.6%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_253f6c5b3a57bff6f1c91d7d54445614 = L.circleMarker(
+                [18.763416665, 100.008960945],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_c360194c2f0a9f1646dbc10e9cf8bd73 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fada6cc9db988722a3a7fa8ab78cf7b3 = $(`<div id="html_fada6cc9db988722a3a7fa8ab78cf7b3" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 8<br>บัตรทั้งหมด: 8,520<br>บัตรเสีย: 410 (4.81%)<br>งดออกเสียง: 143 (1.68%)</div>`)[0];
+                popup_c360194c2f0a9f1646dbc10e9cf8bd73.setContent(html_fada6cc9db988722a3a7fa8ab78cf7b3);
+            
+        
+
+        circle_marker_253f6c5b3a57bff6f1c91d7d54445614.bindPopup(popup_c360194c2f0a9f1646dbc10e9cf8bd73)
+        ;
+
+        
+    
+    
+            circle_marker_253f6c5b3a57bff6f1c91d7d54445614.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 4.81%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_db42c4afa94dd6b681c76a77e0937061 = L.circleMarker(
+                [18.769763497, 99.915958135],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_615752ea39981d1748258500eb00f814 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_abacaf824ad25a5b98d9721729066f0a = $(`<div id="html_abacaf824ad25a5b98d9721729066f0a" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 6,040<br>บัตรเสีย: 234 (3.87%)<br>งดออกเสียง: 102 (1.69%)</div>`)[0];
+                popup_615752ea39981d1748258500eb00f814.setContent(html_abacaf824ad25a5b98d9721729066f0a);
+            
+        
+
+        circle_marker_db42c4afa94dd6b681c76a77e0937061.bindPopup(popup_615752ea39981d1748258500eb00f814)
+        ;
+
+        
+    
+    
+            circle_marker_db42c4afa94dd6b681c76a77e0937061.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.87%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cebc40d78a1a3a8edca243240232572c = L.circleMarker(
+                [18.784909008, 99.970754159],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_c4833b4afb1539d0286f0c63970e5454 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3e6c6b6d4be34d278d42eb7e44441cab = $(`<div id="html_3e6c6b6d4be34d278d42eb7e44441cab" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 5<br>บัตรทั้งหมด: 4,200<br>บัตรเสีย: 151 (3.6%)<br>งดออกเสียง: 69 (1.64%)</div>`)[0];
+                popup_c4833b4afb1539d0286f0c63970e5454.setContent(html_3e6c6b6d4be34d278d42eb7e44441cab);
+            
+        
+
+        circle_marker_cebc40d78a1a3a8edca243240232572c.bindPopup(popup_c4833b4afb1539d0286f0c63970e5454)
+        ;
+
+        
+    
+    
+            circle_marker_cebc40d78a1a3a8edca243240232572c.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.6%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5523a3de5737d7b269a973f2edcb8c1b = L.circleMarker(
+                [18.805734983, 99.918015899],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_ec443b82a477c932e463510e48d0b710 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_561eda209b934e3e21f79be5b2caa2e7 = $(`<div id="html_561eda209b934e3e21f79be5b2caa2e7" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,280<br>บัตรเสีย: 50 (3.91%)<br>งดออกเสียง: 26 (2.03%)</div>`)[0];
+                popup_ec443b82a477c932e463510e48d0b710.setContent(html_561eda209b934e3e21f79be5b2caa2e7);
+            
+        
+
+        circle_marker_5523a3de5737d7b269a973f2edcb8c1b.bindPopup(popup_ec443b82a477c932e463510e48d0b710)
+        ;
+
+        
+    
+    
+            circle_marker_5523a3de5737d7b269a973f2edcb8c1b.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.91%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77a72dad66100fbe6fcb1fcec04f6e93 = L.circleMarker(
+                [18.827520056, 99.936257849],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_bdf30cc3c7573249e8dfaba0f411861f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cb2fecdb142bab114e844544695051fb = $(`<div id="html_cb2fecdb142bab114e844544695051fb" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 13<br>บัตรทั้งหมด: 10,480<br>บัตรเสีย: 345 (3.29%)<br>งดออกเสียง: 136 (1.3%)</div>`)[0];
+                popup_bdf30cc3c7573249e8dfaba0f411861f.setContent(html_cb2fecdb142bab114e844544695051fb);
+            
+        
+
+        circle_marker_77a72dad66100fbe6fcb1fcec04f6e93.bindPopup(popup_bdf30cc3c7573249e8dfaba0f411861f)
+        ;
+
+        
+    
+    
+            circle_marker_77a72dad66100fbe6fcb1fcec04f6e93.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 3.29%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_107bf49ba20ceea7933db8bba0184743 = L.circleMarker(
+                [18.883164624, 99.945182807],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_fb1b48e102046321c0061179e4e406ab = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8be914e46fa41b292123e03d6e6cbe98 = $(`<div id="html_8be914e46fa41b292123e03d6e6cbe98" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 8,600<br>บัตรเสีย: 431 (5.01%)<br>งดออกเสียง: 131 (1.52%)</div>`)[0];
+                popup_fb1b48e102046321c0061179e4e406ab.setContent(html_8be914e46fa41b292123e03d6e6cbe98);
+            
+        
+
+        circle_marker_107bf49ba20ceea7933db8bba0184743.bindPopup(popup_fb1b48e102046321c0061179e4e406ab)
+        ;
+
+        
+    
+    
+            circle_marker_107bf49ba20ceea7933db8bba0184743.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 5.01%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c2e1e303c6c3a9f5105dd4b13a67b427 = L.circleMarker(
+                [18.888510606, 99.932468888],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_c3d34dd75ff188a5a333775f46d0cb18 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d575d6def4b283476545d4ea0245ea6a = $(`<div id="html_d575d6def4b283476545d4ea0245ea6a" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 600<br>บัตรเสีย: 16 (2.67%)<br>งดออกเสียง: 4 (0.67%)</div>`)[0];
+                popup_c3d34dd75ff188a5a333775f46d0cb18.setContent(html_d575d6def4b283476545d4ea0245ea6a);
+            
+        
+
+        circle_marker_c2e1e303c6c3a9f5105dd4b13a67b427.bindPopup(popup_c3d34dd75ff188a5a333775f46d0cb18)
+        ;
+
+        
+    
+    
+            circle_marker_c2e1e303c6c3a9f5105dd4b13a67b427.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 2.67%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e36100eda06278fcf582bdbff1cbc197 = L.circleMarker(
+                [18.969783551, 99.809667626],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_bb37bc277b39687a1a116599b82dde00 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bdeacb548b50590dcd4c40f2b6a1c97e = $(`<div id="html_bdeacb548b50590dcd4c40f2b6a1c97e" style="width: 100.0%; height: 100.0%;"><b>งาว</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 480<br>บัตรเสีย: 29 (6.04%)<br>งดออกเสียง: 0 (0.0%)</div>`)[0];
+                popup_bb37bc277b39687a1a116599b82dde00.setContent(html_bdeacb548b50590dcd4c40f2b6a1c97e);
+            
+        
+
+        circle_marker_e36100eda06278fcf582bdbff1cbc197.bindPopup(popup_bb37bc277b39687a1a116599b82dde00)
+        ;
+
+        
+    
+    
+            circle_marker_e36100eda06278fcf582bdbff1cbc197.bindTooltip(
+                `<div>
+                     งาว — บัตรเสีย 6.04%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c521b573c2e2c8a3012f141f8d1cb1d0 = L.circleMarker(
+                [18.964841989318, 99.592856718038],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_d721c0af2e15fdde2f260122fd8a75e1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7461a67f679bf40b2b656d1eafd23105 = $(`<div id="html_7461a67f679bf40b2b656d1eafd23105" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 600<br>บัตรเสีย: 15 (2.5%)<br>งดออกเสียง: 3 (0.5%)</div>`)[0];
+                popup_d721c0af2e15fdde2f260122fd8a75e1.setContent(html_7461a67f679bf40b2b656d1eafd23105);
+            
+        
+
+        circle_marker_c521b573c2e2c8a3012f141f8d1cb1d0.bindPopup(popup_d721c0af2e15fdde2f260122fd8a75e1)
+        ;
+
+        
+    
+    
+            circle_marker_c521b573c2e2c8a3012f141f8d1cb1d0.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 2.5%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d1a146cac9a17ff5432ae48dcd011a77 = L.circleMarker(
+                [18.967060720998, 99.617265406818],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_7b9490031e91da094248345a64d251b8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cb44b7fbbd3059c15faba219e35e1f2c = $(`<div id="html_cb44b7fbbd3059c15faba219e35e1f2c" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 920<br>บัตรเสีย: 40 (4.35%)<br>งดออกเสียง: 19 (2.07%)</div>`)[0];
+                popup_7b9490031e91da094248345a64d251b8.setContent(html_cb44b7fbbd3059c15faba219e35e1f2c);
+            
+        
+
+        circle_marker_d1a146cac9a17ff5432ae48dcd011a77.bindPopup(popup_7b9490031e91da094248345a64d251b8)
+        ;
+
+        
+    
+    
+            circle_marker_d1a146cac9a17ff5432ae48dcd011a77.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.35%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a125658c02a053bebe1566cbf52d6787 = L.circleMarker(
+                [18.982141096, 99.610416493],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_cc8965937d9e55de605cf2232f1f17a4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2f587411c70b41d76c806e39579e0f5c = $(`<div id="html_2f587411c70b41d76c806e39579e0f5c" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 13<br>บัตรทั้งหมด: 11,120<br>บัตรเสีย: 497 (4.47%)<br>งดออกเสียง: 291 (2.62%)</div>`)[0];
+                popup_cc8965937d9e55de605cf2232f1f17a4.setContent(html_2f587411c70b41d76c806e39579e0f5c);
+            
+        
+
+        circle_marker_a125658c02a053bebe1566cbf52d6787.bindPopup(popup_cc8965937d9e55de605cf2232f1f17a4)
+        ;
+
+        
+    
+    
+            circle_marker_a125658c02a053bebe1566cbf52d6787.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.47%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a4de6006dd9547e6cb310ab024bf649c = L.circleMarker(
+                [18.989337388887, 99.630456510759],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_cb2057111eeefda267b5614418a90857 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b071053d7b2106dda218fc0ffaed6a01 = $(`<div id="html_b071053d7b2106dda218fc0ffaed6a01" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,440<br>บัตรเสีย: 60 (4.17%)<br>งดออกเสียง: 41 (2.85%)</div>`)[0];
+                popup_cb2057111eeefda267b5614418a90857.setContent(html_b071053d7b2106dda218fc0ffaed6a01);
+            
+        
+
+        circle_marker_a4de6006dd9547e6cb310ab024bf649c.bindPopup(popup_cb2057111eeefda267b5614418a90857)
+        ;
+
+        
+    
+    
+            circle_marker_a4de6006dd9547e6cb310ab024bf649c.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.17%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_429b6a201b98a56449d0dfd7c8739297 = L.circleMarker(
+                [19.001300754, 99.610724375],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_61fa782fc97da14188bb4d8ada237696 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e50a21320846ccebabb6143dcf93752 = $(`<div id="html_7e50a21320846ccebabb6143dcf93752" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 760<br>บัตรเสีย: 55 (7.24%)<br>งดออกเสียง: 30 (3.95%)</div>`)[0];
+                popup_61fa782fc97da14188bb4d8ada237696.setContent(html_7e50a21320846ccebabb6143dcf93752);
+            
+        
+
+        circle_marker_429b6a201b98a56449d0dfd7c8739297.bindPopup(popup_61fa782fc97da14188bb4d8ada237696)
+        ;
+
+        
+    
+    
+            circle_marker_429b6a201b98a56449d0dfd7c8739297.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 7.24%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ba7d3c0bbc1bd225c01fe7506c422970 = L.circleMarker(
+                [19.038681706, 99.706051459],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_2016a43228b36709d7dba0c186fa0a29 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0443d24e747ee86e9b0b24029bfdbb9c = $(`<div id="html_0443d24e747ee86e9b0b24029bfdbb9c" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,120<br>บัตรเสีย: 34 (3.04%)<br>งดออกเสียง: 17 (1.52%)</div>`)[0];
+                popup_2016a43228b36709d7dba0c186fa0a29.setContent(html_0443d24e747ee86e9b0b24029bfdbb9c);
+            
+        
+
+        circle_marker_ba7d3c0bbc1bd225c01fe7506c422970.bindPopup(popup_2016a43228b36709d7dba0c186fa0a29)
+        ;
+
+        
+    
+    
+            circle_marker_ba7d3c0bbc1bd225c01fe7506c422970.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 3.04%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ef61e32581328b9d10a1121d4bed8161 = L.circleMarker(
+                [19.052409485, 99.635078694],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9e37b8dfb7a0e28b962f46d643a207ba = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_32476fe24c6c017c962a8e9d9510dd7c = $(`<div id="html_32476fe24c6c017c962a8e9d9510dd7c" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 6<br>บัตรทั้งหมด: 4,200<br>บัตรเสีย: 207 (4.93%)<br>งดออกเสียง: 150 (3.57%)</div>`)[0];
+                popup_9e37b8dfb7a0e28b962f46d643a207ba.setContent(html_32476fe24c6c017c962a8e9d9510dd7c);
+            
+        
+
+        circle_marker_ef61e32581328b9d10a1121d4bed8161.bindPopup(popup_9e37b8dfb7a0e28b962f46d643a207ba)
+        ;
+
+        
+    
+    
+            circle_marker_ef61e32581328b9d10a1121d4bed8161.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.93%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_31ea50c19f63e59db2701e8b80ff0cfb = L.circleMarker(
+                [19.0531494, 99.632262066],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_15e4981f1d4b50756b959e9909d6eef1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9353f993c5a9ed9fb3ce23daa6a81243 = $(`<div id="html_9353f993c5a9ed9fb3ce23daa6a81243" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 840<br>บัตรเสีย: 41 (4.88%)<br>งดออกเสียง: 31 (3.69%)</div>`)[0];
+                popup_15e4981f1d4b50756b959e9909d6eef1.setContent(html_9353f993c5a9ed9fb3ce23daa6a81243);
+            
+        
+
+        circle_marker_31ea50c19f63e59db2701e8b80ff0cfb.bindPopup(popup_15e4981f1d4b50756b959e9909d6eef1)
+        ;
+
+        
+    
+    
+            circle_marker_31ea50c19f63e59db2701e8b80ff0cfb.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.88%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a9ccfbbcbff3a008869a96ad7c5c3aad = L.circleMarker(
+                [19.059504437754, 99.626980870788],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_b1fc91878cbc336e579f640fa21ffbbc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_21664cf68c84608a0f19b6322cff6ee6 = $(`<div id="html_21664cf68c84608a0f19b6322cff6ee6" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 880<br>บัตรเสีย: 63 (7.16%)<br>งดออกเสียง: 47 (5.34%)</div>`)[0];
+                popup_b1fc91878cbc336e579f640fa21ffbbc.setContent(html_21664cf68c84608a0f19b6322cff6ee6);
+            
+        
+
+        circle_marker_a9ccfbbcbff3a008869a96ad7c5c3aad.bindPopup(popup_b1fc91878cbc336e579f640fa21ffbbc)
+        ;
+
+        
+    
+    
+            circle_marker_a9ccfbbcbff3a008869a96ad7c5c3aad.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 7.16%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dac9289e3d5e8db4a1977802645c0920 = L.circleMarker(
+                [19.072544751257, 99.628510568118],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_476705719b01fa7b43a9c45d4416d155 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_45c6d217c271dbcf4bfd05d5ad86e593 = $(`<div id="html_45c6d217c271dbcf4bfd05d5ad86e593" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 520<br>บัตรเสีย: 31 (5.96%)<br>งดออกเสียง: 35 (6.73%)</div>`)[0];
+                popup_476705719b01fa7b43a9c45d4416d155.setContent(html_45c6d217c271dbcf4bfd05d5ad86e593);
+            
+        
+
+        circle_marker_dac9289e3d5e8db4a1977802645c0920.bindPopup(popup_476705719b01fa7b43a9c45d4416d155)
+        ;
+
+        
+    
+    
+            circle_marker_dac9289e3d5e8db4a1977802645c0920.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.96%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8d22d4b05e4afd30f3a8c5741f86b064 = L.circleMarker(
+                [19.074002076, 99.618264911],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_58748505c72d6a97ef7ff2f5a6b951d5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a6993d489e43530c92289b33a251422c = $(`<div id="html_a6993d489e43530c92289b33a251422c" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 6<br>บัตรทั้งหมด: 4,440<br>บัตรเสีย: 203 (4.57%)<br>งดออกเสียง: 100 (2.25%)</div>`)[0];
+                popup_58748505c72d6a97ef7ff2f5a6b951d5.setContent(html_a6993d489e43530c92289b33a251422c);
+            
+        
+
+        circle_marker_8d22d4b05e4afd30f3a8c5741f86b064.bindPopup(popup_58748505c72d6a97ef7ff2f5a6b951d5)
+        ;
+
+        
+    
+    
+            circle_marker_8d22d4b05e4afd30f3a8c5741f86b064.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.57%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a27d47118373181263ec754710da7ce2 = L.circleMarker(
+                [19.101528065, 99.601578895],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_95691086dd2c8006f4d5831df4b9f40e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3f20c81115059396cb5bd74243348a98 = $(`<div id="html_3f20c81115059396cb5bd74243348a98" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 800<br>บัตรเสีย: 36 (4.5%)<br>งดออกเสียง: 25 (3.12%)</div>`)[0];
+                popup_95691086dd2c8006f4d5831df4b9f40e.setContent(html_3f20c81115059396cb5bd74243348a98);
+            
+        
+
+        circle_marker_a27d47118373181263ec754710da7ce2.bindPopup(popup_95691086dd2c8006f4d5831df4b9f40e)
+        ;
+
+        
+    
+    
+            circle_marker_a27d47118373181263ec754710da7ce2.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.5%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8cdf73c7fa40a37ac931760463033cea = L.circleMarker(
+                [19.115569166, 99.697687605],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_e74df97ef1ea913844a0ef6a7f8ba726 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9bac19b0d721acbca23e8ee76def8155 = $(`<div id="html_9bac19b0d721acbca23e8ee76def8155" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 5,760<br>บัตรเสีย: 229 (3.98%)<br>งดออกเสียง: 155 (2.69%)</div>`)[0];
+                popup_e74df97ef1ea913844a0ef6a7f8ba726.setContent(html_9bac19b0d721acbca23e8ee76def8155);
+            
+        
+
+        circle_marker_8cdf73c7fa40a37ac931760463033cea.bindPopup(popup_e74df97ef1ea913844a0ef6a7f8ba726)
+        ;
+
+        
+    
+    
+            circle_marker_8cdf73c7fa40a37ac931760463033cea.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 3.98%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_55a9637901da5017bd1222ce4665fcb7 = L.circleMarker(
+                [19.122447291912, 99.70042495043],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_280c58808970c20ad9eb1f2534e54c9d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e044c31bbd83350daf969d994949515 = $(`<div id="html_7e044c31bbd83350daf969d994949515" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,200<br>บัตรเสีย: 68 (5.67%)<br>งดออกเสียง: 28 (2.33%)</div>`)[0];
+                popup_280c58808970c20ad9eb1f2534e54c9d.setContent(html_7e044c31bbd83350daf969d994949515);
+            
+        
+
+        circle_marker_55a9637901da5017bd1222ce4665fcb7.bindPopup(popup_280c58808970c20ad9eb1f2534e54c9d)
+        ;
+
+        
+    
+    
+            circle_marker_55a9637901da5017bd1222ce4665fcb7.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.67%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aa23f02551ad9db66ee6a11d39476795 = L.circleMarker(
+                [19.135983251, 99.628372842],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_09272f524da3add3bc62ef1b84b92242 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2864e138d4b237c977a960e18b3824bb = $(`<div id="html_2864e138d4b237c977a960e18b3824bb" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 3<br>บัตรทั้งหมด: 2,680<br>บัตรเสีย: 134 (5.0%)<br>งดออกเสียง: 47 (1.75%)</div>`)[0];
+                popup_09272f524da3add3bc62ef1b84b92242.setContent(html_2864e138d4b237c977a960e18b3824bb);
+            
+        
+
+        circle_marker_aa23f02551ad9db66ee6a11d39476795.bindPopup(popup_09272f524da3add3bc62ef1b84b92242)
+        ;
+
+        
+    
+    
+            circle_marker_aa23f02551ad9db66ee6a11d39476795.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e2e6ea2b575691e9327622a85270dc1a = L.circleMarker(
+                [19.144806266, 99.62259216],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_18ff6c4b2412a4267d91c5e938451e4b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_885b84f714a293de1e942fdcf0aac73f = $(`<div id="html_885b84f714a293de1e942fdcf0aac73f" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 8<br>บัตรทั้งหมด: 6,080<br>บัตรเสีย: 309 (5.08%)<br>งดออกเสียง: 124 (2.04%)</div>`)[0];
+                popup_18ff6c4b2412a4267d91c5e938451e4b.setContent(html_885b84f714a293de1e942fdcf0aac73f);
+            
+        
+
+        circle_marker_e2e6ea2b575691e9327622a85270dc1a.bindPopup(popup_18ff6c4b2412a4267d91c5e938451e4b)
+        ;
+
+        
+    
+    
+            circle_marker_e2e6ea2b575691e9327622a85270dc1a.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.08%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a34077f56d397f09a9bf9df0f31c569f = L.circleMarker(
+                [19.145704247, 99.619237904],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_4f07e8887f819edb1f6d57fb045fc328 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_85600ad190717de827108b114c0be1b8 = $(`<div id="html_85600ad190717de827108b114c0be1b8" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 4<br>บัตรทั้งหมด: 3,960<br>บัตรเสีย: 202 (5.1%)<br>งดออกเสียง: 119 (3.01%)</div>`)[0];
+                popup_4f07e8887f819edb1f6d57fb045fc328.setContent(html_85600ad190717de827108b114c0be1b8);
+            
+        
+
+        circle_marker_a34077f56d397f09a9bf9df0f31c569f.bindPopup(popup_4f07e8887f819edb1f6d57fb045fc328)
+        ;
+
+        
+    
+    
+            circle_marker_a34077f56d397f09a9bf9df0f31c569f.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.1%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb3d7c4f17f2b603932f5feae868940c = L.circleMarker(
+                [19.145732887, 99.617792518],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_07154b873b16bcb980a8df5ae494e4f7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dd4624d7f9af4e2ea9aa8062e473dce5 = $(`<div id="html_dd4624d7f9af4e2ea9aa8062e473dce5" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 8<br>บัตรทั้งหมด: 6,360<br>บัตรเสีย: 352 (5.53%)<br>งดออกเสียง: 326 (5.13%)</div>`)[0];
+                popup_07154b873b16bcb980a8df5ae494e4f7.setContent(html_dd4624d7f9af4e2ea9aa8062e473dce5);
+            
+        
+
+        circle_marker_cb3d7c4f17f2b603932f5feae868940c.bindPopup(popup_07154b873b16bcb980a8df5ae494e4f7)
+        ;
+
+        
+    
+    
+            circle_marker_cb3d7c4f17f2b603932f5feae868940c.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.53%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1b3e96becef4fb4e5186c9d50fbb08b8 = L.circleMarker(
+                [19.202266183, 99.622974537],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_2bd46a1fb2236cfebf1792fe49657e50 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_69c67bf5b0315264ceb4b5401c266e28 = $(`<div id="html_69c67bf5b0315264ceb4b5401c266e28" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,040<br>บัตรเสีย: 61 (5.87%)<br>งดออกเสียง: 14 (1.35%)</div>`)[0];
+                popup_2bd46a1fb2236cfebf1792fe49657e50.setContent(html_69c67bf5b0315264ceb4b5401c266e28);
+            
+        
+
+        circle_marker_1b3e96becef4fb4e5186c9d50fbb08b8.bindPopup(popup_2bd46a1fb2236cfebf1792fe49657e50)
+        ;
+
+        
+    
+    
+            circle_marker_1b3e96becef4fb4e5186c9d50fbb08b8.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.87%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_71c9283f421bdd149b3230513885c1ec = L.circleMarker(
+                [19.232624347, 99.634438429],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_80ce69bfa3e0b13599181aeeb7b5405b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_90ba0132dead546c665cba13bac600be = $(`<div id="html_90ba0132dead546c665cba13bac600be" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 6,980<br>บัตรเสีย: 357 (5.11%)<br>งดออกเสียง: 244 (3.5%)</div>`)[0];
+                popup_80ce69bfa3e0b13599181aeeb7b5405b.setContent(html_90ba0132dead546c665cba13bac600be);
+            
+        
+
+        circle_marker_71c9283f421bdd149b3230513885c1ec.bindPopup(popup_80ce69bfa3e0b13599181aeeb7b5405b)
+        ;
+
+        
+    
+    
+            circle_marker_71c9283f421bdd149b3230513885c1ec.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 5.11%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82fb9341489ebc142d9f26f5f5eb5b00 = L.circleMarker(
+                [19.271866660226, 99.637525472621],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_40232e364f57aca36b0f77246f403e95 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3698b79150d408d47da59eea6fb772af = $(`<div id="html_3698b79150d408d47da59eea6fb772af" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,080<br>บัตรเสีย: 53 (4.91%)<br>งดออกเสียง: 19 (1.76%)</div>`)[0];
+                popup_40232e364f57aca36b0f77246f403e95.setContent(html_3698b79150d408d47da59eea6fb772af);
+            
+        
+
+        circle_marker_82fb9341489ebc142d9f26f5f5eb5b00.bindPopup(popup_40232e364f57aca36b0f77246f403e95)
+        ;
+
+        
+    
+    
+            circle_marker_82fb9341489ebc142d9f26f5f5eb5b00.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 4.91%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_66d508a67d2a59990c2996b0f2e36dd4 = L.circleMarker(
+                [19.274838207, 99.6375892],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_ab0b99ba5e89b21b58ef90d85c958ae2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2852995dacdf935f4baff887623ef7ff = $(`<div id="html_2852995dacdf935f4baff887623ef7ff" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 5<br>บัตรทั้งหมด: 3,400<br>บัตรเสีย: 210 (6.18%)<br>งดออกเสียง: 71 (2.09%)</div>`)[0];
+                popup_ab0b99ba5e89b21b58ef90d85c958ae2.setContent(html_2852995dacdf935f4baff887623ef7ff);
+            
+        
+
+        circle_marker_66d508a67d2a59990c2996b0f2e36dd4.bindPopup(popup_ab0b99ba5e89b21b58ef90d85c958ae2)
+        ;
+
+        
+    
+    
+            circle_marker_66d508a67d2a59990c2996b0f2e36dd4.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 6.18%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_58961bafc6f2f336ee0bed5ac85ad2b8 = L.circleMarker(
+                [19.284191578293, 99.631077190689],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_ba6cc77ebb0074576801719c4dfc06ad = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2520f848090b5dfccb0645f5eeeb6108 = $(`<div id="html_2520f848090b5dfccb0645f5eeeb6108" style="width: 100.0%; height: 100.0%;"><b>วังเหนือ</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 800<br>บัตรเสีย: 50 (6.25%)<br>งดออกเสียง: 37 (4.62%)</div>`)[0];
+                popup_ba6cc77ebb0074576801719c4dfc06ad.setContent(html_2520f848090b5dfccb0645f5eeeb6108);
+            
+        
+
+        circle_marker_58961bafc6f2f336ee0bed5ac85ad2b8.bindPopup(popup_ba6cc77ebb0074576801719c4dfc06ad)
+        ;
+
+        
+    
+    
+            circle_marker_58961bafc6f2f336ee0bed5ac85ad2b8.bindTooltip(
+                `<div>
+                     วังเหนือ — บัตรเสีย 6.25%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8977d15abc2d45617ace9326ac277270 = L.circleMarker(
+                [18.534817256, 99.477912967],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_049535fe1ed5a478e5278f022c28f286 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_56c85151a6d1e1f65ebfec8dd9da637f = $(`<div id="html_56c85151a6d1e1f65ebfec8dd9da637f" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 14<br>บัตรทั้งหมด: 12,200<br>บัตรเสีย: 611 (5.01%)<br>งดออกเสียง: 293 (2.4%)</div>`)[0];
+                popup_049535fe1ed5a478e5278f022c28f286.setContent(html_56c85151a6d1e1f65ebfec8dd9da637f);
+            
+        
+
+        circle_marker_8977d15abc2d45617ace9326ac277270.bindPopup(popup_049535fe1ed5a478e5278f022c28f286)
+        ;
+
+        
+    
+    
+            circle_marker_8977d15abc2d45617ace9326ac277270.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 5.01%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_609be338c827018312e4dc9c59a6a0db = L.circleMarker(
+                [18.560390828, 99.457517534],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_f0ea299e3d68a2f77feee9da1e4691b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_631157e838daed03ed43bf733144f979 = $(`<div id="html_631157e838daed03ed43bf733144f979" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 880<br>บัตรเสีย: 43 (4.89%)<br>งดออกเสียง: 9 (1.02%)</div>`)[0];
+                popup_f0ea299e3d68a2f77feee9da1e4691b5.setContent(html_631157e838daed03ed43bf733144f979);
+            
+        
+
+        circle_marker_609be338c827018312e4dc9c59a6a0db.bindPopup(popup_f0ea299e3d68a2f77feee9da1e4691b5)
+        ;
+
+        
+    
+    
+            circle_marker_609be338c827018312e4dc9c59a6a0db.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.89%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e8bdd6d4091b81cf0087251d2e38a20c = L.circleMarker(
+                [18.584164099, 99.471396299],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_c7b278c9b0c65acd1766ae6cddb91942 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_16265a178183088d0943cfd895f023fa = $(`<div id="html_16265a178183088d0943cfd895f023fa" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 680<br>บัตรเสีย: 44 (6.47%)<br>งดออกเสียง: 20 (2.94%)</div>`)[0];
+                popup_c7b278c9b0c65acd1766ae6cddb91942.setContent(html_16265a178183088d0943cfd895f023fa);
+            
+        
+
+        circle_marker_e8bdd6d4091b81cf0087251d2e38a20c.bindPopup(popup_c7b278c9b0c65acd1766ae6cddb91942)
+        ;
+
+        
+    
+    
+            circle_marker_e8bdd6d4091b81cf0087251d2e38a20c.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 6.47%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7f6a13e5bbf2878ce93efef1d9fff1fe = L.circleMarker(
+                [18.62051262, 99.475644072],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_d7917c0379eeb415ccb476955d39cb9d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b2209111409336c1729756fc606039e4 = $(`<div id="html_b2209111409336c1729756fc606039e4" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,200<br>บัตรเสีย: 78 (6.5%)<br>งดออกเสียง: 16 (1.33%)</div>`)[0];
+                popup_d7917c0379eeb415ccb476955d39cb9d.setContent(html_b2209111409336c1729756fc606039e4);
+            
+        
+
+        circle_marker_7f6a13e5bbf2878ce93efef1d9fff1fe.bindPopup(popup_d7917c0379eeb415ccb476955d39cb9d)
+        ;
+
+        
+    
+    
+            circle_marker_7f6a13e5bbf2878ce93efef1d9fff1fe.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 6.5%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f0446d008dbe42ac92fd9b19226ed349 = L.circleMarker(
+                [18.65300943, 99.474415359],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_484467f6b1e47f502493b17b311032f2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5bb359dbbe309d5312b562836c3e20a8 = $(`<div id="html_5bb359dbbe309d5312b562836c3e20a8" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 960<br>บัตรเสีย: 51 (5.31%)<br>งดออกเสียง: 27 (2.81%)</div>`)[0];
+                popup_484467f6b1e47f502493b17b311032f2.setContent(html_5bb359dbbe309d5312b562836c3e20a8);
+            
+        
+
+        circle_marker_f0446d008dbe42ac92fd9b19226ed349.bindPopup(popup_484467f6b1e47f502493b17b311032f2)
+        ;
+
+        
+    
+    
+            circle_marker_f0446d008dbe42ac92fd9b19226ed349.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 5.31%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9e00c44c97138827d9f54292eb4b9f96 = L.circleMarker(
+                [18.662270577, 99.496831649],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9380cd73e5941ccaf141063f65a1a941 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b3107de24637316e5bc3330f83868c2a = $(`<div id="html_b3107de24637316e5bc3330f83868c2a" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 9,160<br>บัตรเสีย: 633 (6.91%)<br>งดออกเสียง: 297 (3.24%)</div>`)[0];
+                popup_9380cd73e5941ccaf141063f65a1a941.setContent(html_b3107de24637316e5bc3330f83868c2a);
+            
+        
+
+        circle_marker_9e00c44c97138827d9f54292eb4b9f96.bindPopup(popup_9380cd73e5941ccaf141063f65a1a941)
+        ;
+
+        
+    
+    
+            circle_marker_9e00c44c97138827d9f54292eb4b9f96.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 6.91%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b3b31b50c7511541adc21cfb92ab8973 = L.circleMarker(
+                [18.686342894, 99.489965873],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_e93103cd9471805575def8be1fd26674 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b28a331139cbf37b0e14d7fc0d4d7796 = $(`<div id="html_b28a331139cbf37b0e14d7fc0d4d7796" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 840<br>บัตรเสีย: 70 (8.33%)<br>งดออกเสียง: 19 (2.26%)</div>`)[0];
+                popup_e93103cd9471805575def8be1fd26674.setContent(html_b28a331139cbf37b0e14d7fc0d4d7796);
+            
+        
+
+        circle_marker_b3b31b50c7511541adc21cfb92ab8973.bindPopup(popup_e93103cd9471805575def8be1fd26674)
+        ;
+
+        
+    
+    
+            circle_marker_b3b31b50c7511541adc21cfb92ab8973.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 8.33%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1a3247798dfd28da3ce347ef21fb27ef = L.circleMarker(
+                [18.762775065, 99.500650973],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_570832dd689946b69852f5d650dc9109 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a36559ed5deb25f568d13e63d33a44e3 = $(`<div id="html_a36559ed5deb25f568d13e63d33a44e3" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 760<br>บัตรเสีย: 32 (4.21%)<br>งดออกเสียง: 26 (3.42%)</div>`)[0];
+                popup_570832dd689946b69852f5d650dc9109.setContent(html_a36559ed5deb25f568d13e63d33a44e3);
+            
+        
+
+        circle_marker_1a3247798dfd28da3ce347ef21fb27ef.bindPopup(popup_570832dd689946b69852f5d650dc9109)
+        ;
+
+        
+    
+    
+            circle_marker_1a3247798dfd28da3ce347ef21fb27ef.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.21%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d6894e94c37e8a535d40790e88cb2981 = L.circleMarker(
+                [18.764500013, 99.511589993],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_f6a07687ed481b267c4436458bc57c83 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_38e385cc9f8e1042a31cdc246914fb40 = $(`<div id="html_38e385cc9f8e1042a31cdc246914fb40" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 640<br>บัตรเสีย: 29 (4.53%)<br>งดออกเสียง: 15 (2.34%)</div>`)[0];
+                popup_f6a07687ed481b267c4436458bc57c83.setContent(html_38e385cc9f8e1042a31cdc246914fb40);
+            
+        
+
+        circle_marker_d6894e94c37e8a535d40790e88cb2981.bindPopup(popup_f6a07687ed481b267c4436458bc57c83)
+        ;
+
+        
+    
+    
+            circle_marker_d6894e94c37e8a535d40790e88cb2981.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.53%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fc54223beafabcf63231c480e2a8a446 = L.circleMarker(
+                [18.765790504, 99.517778763],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_3318fcc7149f9c81a848098bd943fcce = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_52027dbcc58eaf80f65f78d71e75e3b1 = $(`<div id="html_52027dbcc58eaf80f65f78d71e75e3b1" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 8<br>บัตรทั้งหมด: 6,280<br>บัตรเสีย: 337 (5.37%)<br>งดออกเสียง: 194 (3.09%)</div>`)[0];
+                popup_3318fcc7149f9c81a848098bd943fcce.setContent(html_52027dbcc58eaf80f65f78d71e75e3b1);
+            
+        
+
+        circle_marker_fc54223beafabcf63231c480e2a8a446.bindPopup(popup_3318fcc7149f9c81a848098bd943fcce)
+        ;
+
+        
+    
+    
+            circle_marker_fc54223beafabcf63231c480e2a8a446.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 5.37%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ad061271213bbd43339ea014ee516cc5 = L.circleMarker(
+                [18.784733187, 99.499536408],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_275739ea576d676436d9eb648ecc2ce8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5f8316d4b56838346d1537009926ccc4 = $(`<div id="html_5f8316d4b56838346d1537009926ccc4" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 640<br>บัตรเสีย: 31 (4.84%)<br>งดออกเสียง: 15 (2.34%)</div>`)[0];
+                popup_275739ea576d676436d9eb648ecc2ce8.setContent(html_5f8316d4b56838346d1537009926ccc4);
+            
+        
+
+        circle_marker_ad061271213bbd43339ea014ee516cc5.bindPopup(popup_275739ea576d676436d9eb648ecc2ce8)
+        ;
+
+        
+    
+    
+            circle_marker_ad061271213bbd43339ea014ee516cc5.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.84%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7387ce56908d1b267524cd21f95ab3e5 = L.circleMarker(
+                [18.798822998, 99.511462596],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_e4f0369abead7c140702e50d15c41b2d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1e0ca7d486d460f558592815614e2763 = $(`<div id="html_1e0ca7d486d460f558592815614e2763" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 8,400<br>บัตรเสีย: 402 (4.79%)<br>งดออกเสียง: 195 (2.32%)</div>`)[0];
+                popup_e4f0369abead7c140702e50d15c41b2d.setContent(html_1e0ca7d486d460f558592815614e2763);
+            
+        
+
+        circle_marker_7387ce56908d1b267524cd21f95ab3e5.bindPopup(popup_e4f0369abead7c140702e50d15c41b2d)
+        ;
+
+        
+    
+    
+            circle_marker_7387ce56908d1b267524cd21f95ab3e5.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.79%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_acfa3e645d1c901be6bbf9ea83a029b5 = L.circleMarker(
+                [18.808700857, 99.503359055],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_8e457a4ed58f5068e841a892f7206b7c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_73fe2ea0710299aa2f08a40195b14d20 = $(`<div id="html_73fe2ea0710299aa2f08a40195b14d20" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,000<br>บัตรเสีย: 49 (4.9%)<br>งดออกเสียง: 26 (2.6%)</div>`)[0];
+                popup_8e457a4ed58f5068e841a892f7206b7c.setContent(html_73fe2ea0710299aa2f08a40195b14d20);
+            
+        
+
+        circle_marker_acfa3e645d1c901be6bbf9ea83a029b5.bindPopup(popup_8e457a4ed58f5068e841a892f7206b7c)
+        ;
+
+        
+    
+    
+            circle_marker_acfa3e645d1c901be6bbf9ea83a029b5.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.9%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_68584cbd189fe0e78fb9de2adc302228 = L.circleMarker(
+                [18.818339047, 99.503774527],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_1cdd24652054f2b8fab1afbef12ce56d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fd02a9fbf9c5e557431790cdd10c8f8f = $(`<div id="html_fd02a9fbf9c5e557431790cdd10c8f8f" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 480<br>บัตรเสีย: 19 (3.96%)<br>งดออกเสียง: 11 (2.29%)</div>`)[0];
+                popup_1cdd24652054f2b8fab1afbef12ce56d.setContent(html_fd02a9fbf9c5e557431790cdd10c8f8f);
+            
+        
+
+        circle_marker_68584cbd189fe0e78fb9de2adc302228.bindPopup(popup_1cdd24652054f2b8fab1afbef12ce56d)
+        ;
+
+        
+    
+    
+            circle_marker_68584cbd189fe0e78fb9de2adc302228.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 3.96%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7752ae3a259b0f5365156100dbc2f383 = L.circleMarker(
+                [18.85301452, 99.502710029],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_ea1f877eb0bd30051ac74048fa3389eb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_979156856aacd4c178da69441a6db0e5 = $(`<div id="html_979156856aacd4c178da69441a6db0e5" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,200<br>บัตรเสีย: 45 (3.75%)<br>งดออกเสียง: 25 (2.08%)</div>`)[0];
+                popup_ea1f877eb0bd30051ac74048fa3389eb.setContent(html_979156856aacd4c178da69441a6db0e5);
+            
+        
+
+        circle_marker_7752ae3a259b0f5365156100dbc2f383.bindPopup(popup_ea1f877eb0bd30051ac74048fa3389eb)
+        ;
+
+        
+    
+    
+            circle_marker_7752ae3a259b0f5365156100dbc2f383.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 3.75%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d5313fcdebf46ef2656006f321c787e1 = L.circleMarker(
+                [18.890421, 99.53401],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_2616191d0f5e76f2672f3fdde127ad6f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b030242b941e607c3a63a6886acb34c3 = $(`<div id="html_b030242b941e607c3a63a6886acb34c3" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 800<br>บัตรเสีย: 75 (9.38%)<br>งดออกเสียง: 14 (1.75%)</div>`)[0];
+                popup_2616191d0f5e76f2672f3fdde127ad6f.setContent(html_b030242b941e607c3a63a6886acb34c3);
+            
+        
+
+        circle_marker_d5313fcdebf46ef2656006f321c787e1.bindPopup(popup_2616191d0f5e76f2672f3fdde127ad6f)
+        ;
+
+        
+    
+    
+            circle_marker_d5313fcdebf46ef2656006f321c787e1.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 9.38%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_898ef17b61b21b9e8e159d74ae884b05 = L.circleMarker(
+                [18.919003054, 99.423898062],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_d732f36a476e222051b9144525f466c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_96cdb2d83e9e2101f175c73f2bbce87e = $(`<div id="html_96cdb2d83e9e2101f175c73f2bbce87e" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 960<br>บัตรเสีย: 39 (4.06%)<br>งดออกเสียง: 24 (2.5%)</div>`)[0];
+                popup_d732f36a476e222051b9144525f466c7.setContent(html_96cdb2d83e9e2101f175c73f2bbce87e);
+            
+        
+
+        circle_marker_898ef17b61b21b9e8e159d74ae884b05.bindPopup(popup_d732f36a476e222051b9144525f466c7)
+        ;
+
+        
+    
+    
+            circle_marker_898ef17b61b21b9e8e159d74ae884b05.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.06%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b5adb8089479dcf9958259f1a1073d2a = L.circleMarker(
+                [18.96366578, 99.521461997],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_a2778e80dea2d4975bf11fae8b5bae1a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5c5c9b0dda3902c256ffa65f79dc7537 = $(`<div id="html_5c5c9b0dda3902c256ffa65f79dc7537" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 6<br>บัตรทั้งหมด: 3,800<br>บัตรเสีย: 189 (4.97%)<br>งดออกเสียง: 71 (1.87%)</div>`)[0];
+                popup_a2778e80dea2d4975bf11fae8b5bae1a.setContent(html_5c5c9b0dda3902c256ffa65f79dc7537);
+            
+        
+
+        circle_marker_b5adb8089479dcf9958259f1a1073d2a.bindPopup(popup_a2778e80dea2d4975bf11fae8b5bae1a)
+        ;
+
+        
+    
+    
+            circle_marker_b5adb8089479dcf9958259f1a1073d2a.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.97%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2a7d1065bc5c3153dca47dc41c4a72cd = L.circleMarker(
+                [18.965019838, 99.521062685],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_154b38286721a24dc09e98f07cdf26ce = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_766485064866a10dfabe51ea4eb2242f = $(`<div id="html_766485064866a10dfabe51ea4eb2242f" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,040<br>บัตรเสีย: 48 (4.62%)<br>งดออกเสียง: 18 (1.73%)</div>`)[0];
+                popup_154b38286721a24dc09e98f07cdf26ce.setContent(html_766485064866a10dfabe51ea4eb2242f);
+            
+        
+
+        circle_marker_2a7d1065bc5c3153dca47dc41c4a72cd.bindPopup(popup_154b38286721a24dc09e98f07cdf26ce)
+        ;
+
+        
+    
+    
+            circle_marker_2a7d1065bc5c3153dca47dc41c4a72cd.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.62%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a5dccad0f1831a7f40668f436a26114e = L.circleMarker(
+                [18.983085017, 99.523908754],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_57e5427a63e8e2d6abc76bc277463783 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_276bec7310222a55cc29ed66edc5cfb6 = $(`<div id="html_276bec7310222a55cc29ed66edc5cfb6" style="width: 100.0%; height: 100.0%;"><b>เมืองปาน</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 960<br>บัตรเสีย: 40 (4.17%)<br>งดออกเสียง: 19 (1.98%)</div>`)[0];
+                popup_57e5427a63e8e2d6abc76bc277463783.setContent(html_276bec7310222a55cc29ed66edc5cfb6);
+            
+        
+
+        circle_marker_a5dccad0f1831a7f40668f436a26114e.bindPopup(popup_57e5427a63e8e2d6abc76bc277463783)
+        ;
+
+        
+    
+    
+            circle_marker_a5dccad0f1831a7f40668f436a26114e.bindTooltip(
+                `<div>
+                     เมืองปาน — บัตรเสีย 4.17%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a7762f56b4c7ae3b50be21707271368f = L.circleMarker(
+                [18.388821053, 99.595318625],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_8292f121142c0ff9d053bd95dffcc06e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3b5002a44bb484b9ea99da0d63266a52 = $(`<div id="html_3b5002a44bb484b9ea99da0d63266a52" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 960<br>บัตรเสีย: 55 (5.73%)<br>งดออกเสียง: 48 (5.0%)</div>`)[0];
+                popup_8292f121142c0ff9d053bd95dffcc06e.setContent(html_3b5002a44bb484b9ea99da0d63266a52);
+            
+        
+
+        circle_marker_a7762f56b4c7ae3b50be21707271368f.bindPopup(popup_8292f121142c0ff9d053bd95dffcc06e)
+        ;
+
+        
+    
+    
+            circle_marker_a7762f56b4c7ae3b50be21707271368f.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 5.73%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_537f7ce7ee6e2415c161beffee97ce9c = L.circleMarker(
+                [18.390148097, 99.594737656],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9e4807e43ccfc5023978a0e529355677 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_698f26eaaa166148a6d8dbdd1e83ff86 = $(`<div id="html_698f26eaaa166148a6d8dbdd1e83ff86" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 840<br>บัตรเสีย: 40 (4.76%)<br>งดออกเสียง: 33 (3.93%)</div>`)[0];
+                popup_9e4807e43ccfc5023978a0e529355677.setContent(html_698f26eaaa166148a6d8dbdd1e83ff86);
+            
+        
+
+        circle_marker_537f7ce7ee6e2415c161beffee97ce9c.bindPopup(popup_9e4807e43ccfc5023978a0e529355677)
+        ;
+
+        
+    
+    
+            circle_marker_537f7ce7ee6e2415c161beffee97ce9c.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 4.76%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f5d6e66aca3cc401da19c6453b029159 = L.circleMarker(
+                [18.390209472, 99.618664956],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_99df914e12972498de6fedb3510f2a1e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_66d29d3be5caccecee8e8b4c732978bd = $(`<div id="html_66d29d3be5caccecee8e8b4c732978bd" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 8,640<br>บัตรเสีย: 502 (5.81%)<br>งดออกเสียง: 328 (3.8%)</div>`)[0];
+                popup_99df914e12972498de6fedb3510f2a1e.setContent(html_66d29d3be5caccecee8e8b4c732978bd);
+            
+        
+
+        circle_marker_f5d6e66aca3cc401da19c6453b029159.bindPopup(popup_99df914e12972498de6fedb3510f2a1e)
+        ;
+
+        
+    
+    
+            circle_marker_f5d6e66aca3cc401da19c6453b029159.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 5.81%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_996f9618a5495537f2bd32c3cdb414a1 = L.circleMarker(
+                [18.396303, 99.60802],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_3aa601a64fda3c1d07a0a866f5c4ab4e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9aa6f45a1637de73823fa96b5cd267a1 = $(`<div id="html_9aa6f45a1637de73823fa96b5cd267a1" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,320<br>บัตรเสีย: 82 (6.21%)<br>งดออกเสียง: 68 (5.15%)</div>`)[0];
+                popup_3aa601a64fda3c1d07a0a866f5c4ab4e.setContent(html_9aa6f45a1637de73823fa96b5cd267a1);
+            
+        
+
+        circle_marker_996f9618a5495537f2bd32c3cdb414a1.bindPopup(popup_3aa601a64fda3c1d07a0a866f5c4ab4e)
+        ;
+
+        
+    
+    
+            circle_marker_996f9618a5495537f2bd32c3cdb414a1.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 6.21%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6f7d27f94ae70693c992bbfde5480101 = L.circleMarker(
+                [18.399503, 99.610138],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_d59e1b1b62cba31d8f7d485af4d63829 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_18ba93cccae7222a99bb536b5e99916d = $(`<div id="html_18ba93cccae7222a99bb536b5e99916d" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 880<br>บัตรเสีย: 47 (5.34%)<br>งดออกเสียง: 38 (4.32%)</div>`)[0];
+                popup_d59e1b1b62cba31d8f7d485af4d63829.setContent(html_18ba93cccae7222a99bb536b5e99916d);
+            
+        
+
+        circle_marker_6f7d27f94ae70693c992bbfde5480101.bindPopup(popup_d59e1b1b62cba31d8f7d485af4d63829)
+        ;
+
+        
+    
+    
+            circle_marker_6f7d27f94ae70693c992bbfde5480101.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 5.34%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_26ad73228949ae1611f7b3e2d85675d6 = L.circleMarker(
+                [18.417358493, 99.648218553],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_0c2f8f4dc2f5167648cdb84e60a224b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_391dcba1d21991016fc53d8d50a4e645 = $(`<div id="html_391dcba1d21991016fc53d8d50a4e645" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 320<br>บัตรเสีย: 10 (3.12%)<br>งดออกเสียง: 18 (5.62%)</div>`)[0];
+                popup_0c2f8f4dc2f5167648cdb84e60a224b5.setContent(html_391dcba1d21991016fc53d8d50a4e645);
+            
+        
+
+        circle_marker_26ad73228949ae1611f7b3e2d85675d6.bindPopup(popup_0c2f8f4dc2f5167648cdb84e60a224b5)
+        ;
+
+        
+    
+    
+            circle_marker_26ad73228949ae1611f7b3e2d85675d6.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 3.12%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_854dcffba0c88376121f83ce891ae864 = L.circleMarker(
+                [18.421201454, 99.659604157],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_3aed0b1fa8561fc85d28d3dd64c0059f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e0f4cff71d5031b2626e213b7c139a0f = $(`<div id="html_e0f4cff71d5031b2626e213b7c139a0f" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 800<br>บัตรเสีย: 36 (4.5%)<br>งดออกเสียง: 40 (5.0%)</div>`)[0];
+                popup_3aed0b1fa8561fc85d28d3dd64c0059f.setContent(html_e0f4cff71d5031b2626e213b7c139a0f);
+            
+        
+
+        circle_marker_854dcffba0c88376121f83ce891ae864.bindPopup(popup_3aed0b1fa8561fc85d28d3dd64c0059f)
+        ;
+
+        
+    
+    
+            circle_marker_854dcffba0c88376121f83ce891ae864.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 4.5%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d35a6a60f05d2337f3fdbb54854d1954 = L.circleMarker(
+                [18.431765687853, 99.626114601095],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_24bdea4520f3d42986aba226fbdf67eb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_af42aacca92ea71bd835e0ce562d3914 = $(`<div id="html_af42aacca92ea71bd835e0ce562d3914" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,520<br>บัตรเสีย: 93 (6.12%)<br>งดออกเสียง: 55 (3.62%)</div>`)[0];
+                popup_24bdea4520f3d42986aba226fbdf67eb.setContent(html_af42aacca92ea71bd835e0ce562d3914);
+            
+        
+
+        circle_marker_d35a6a60f05d2337f3fdbb54854d1954.bindPopup(popup_24bdea4520f3d42986aba226fbdf67eb)
+        ;
+
+        
+    
+    
+            circle_marker_d35a6a60f05d2337f3fdbb54854d1954.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 6.12%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6fd37cbdd565e47e8d8d10f0a3dbd275 = L.circleMarker(
+                [18.432188, 99.623192],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_4fe34bc03406756ec21f80cb8104809b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dbf57d2ffe0133324d2cf694f124861f = $(`<div id="html_dbf57d2ffe0133324d2cf694f124861f" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 760<br>บัตรเสีย: 71 (9.34%)<br>งดออกเสียง: 35 (4.61%)</div>`)[0];
+                popup_4fe34bc03406756ec21f80cb8104809b.setContent(html_dbf57d2ffe0133324d2cf694f124861f);
+            
+        
+
+        circle_marker_6fd37cbdd565e47e8d8d10f0a3dbd275.bindPopup(popup_4fe34bc03406756ec21f80cb8104809b)
+        ;
+
+        
+    
+    
+            circle_marker_6fd37cbdd565e47e8d8d10f0a3dbd275.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 9.34%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f64b26ba5739f1d4321b1ec823558cab = L.circleMarker(
+                [18.506435123, 99.647794706],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_97510473ddb79c72977452121db16585 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_243dd0ea2295c746280e6ebc7dca434e = $(`<div id="html_243dd0ea2295c746280e6ebc7dca434e" style="width: 100.0%; height: 100.0%;"><b>เมืองลำปาง</b><br>จำนวนหน่วย: 12<br>บัตรทั้งหมด: 10,080<br>บัตรเสีย: 622 (6.17%)<br>งดออกเสียง: 407 (4.04%)</div>`)[0];
+                popup_97510473ddb79c72977452121db16585.setContent(html_243dd0ea2295c746280e6ebc7dca434e);
+            
+        
+
+        circle_marker_f64b26ba5739f1d4321b1ec823558cab.bindPopup(popup_97510473ddb79c72977452121db16585)
+        ;
+
+        
+    
+    
+            circle_marker_f64b26ba5739f1d4321b1ec823558cab.bindTooltip(
+                `<div>
+                     เมืองลำปาง — บัตรเสีย 6.17%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d80c89c86d786be5a824673ce3c9d828 = L.circleMarker(
+                [18.611984268, 99.626124143],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_5a47cfa80f3e7f838a92caf2d78e7467 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a6b86440597f6f65640c5bac2a6c0b20 = $(`<div id="html_a6b86440597f6f65640c5bac2a6c0b20" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 5,120<br>บัตรเสีย: 275 (5.37%)<br>งดออกเสียง: 105 (2.05%)</div>`)[0];
+                popup_5a47cfa80f3e7f838a92caf2d78e7467.setContent(html_a6b86440597f6f65640c5bac2a6c0b20);
+            
+        
+
+        circle_marker_d80c89c86d786be5a824673ce3c9d828.bindPopup(popup_5a47cfa80f3e7f838a92caf2d78e7467)
+        ;
+
+        
+    
+    
+            circle_marker_d80c89c86d786be5a824673ce3c9d828.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.37%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_690bd7b8d958cc3c9cfc2e6555ac12fc = L.circleMarker(
+                [18.628875994, 99.540406395],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_c553102f658ae0e4d539ea5ae15743b7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d3e2fc505deb12110ce593a45100cae1 = $(`<div id="html_d3e2fc505deb12110ce593a45100cae1" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 10<br>บัตรทั้งหมด: 7,800<br>บัตรเสีย: 399 (5.12%)<br>งดออกเสียง: 377 (4.83%)</div>`)[0];
+                popup_c553102f658ae0e4d539ea5ae15743b7.setContent(html_d3e2fc505deb12110ce593a45100cae1);
+            
+        
+
+        circle_marker_690bd7b8d958cc3c9cfc2e6555ac12fc.bindPopup(popup_c553102f658ae0e4d539ea5ae15743b7)
+        ;
+
+        
+    
+    
+            circle_marker_690bd7b8d958cc3c9cfc2e6555ac12fc.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.12%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51b3db64a54a94c2fa90622d93dff633 = L.circleMarker(
+                [18.700229303, 99.574078929],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9f4375722c7a5f97aa1adcdfbf718d91 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0c7a182c74d972845ace53b1b637034e = $(`<div id="html_0c7a182c74d972845ace53b1b637034e" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 560<br>บัตรเสีย: 20 (3.57%)<br>งดออกเสียง: 23 (4.11%)</div>`)[0];
+                popup_9f4375722c7a5f97aa1adcdfbf718d91.setContent(html_0c7a182c74d972845ace53b1b637034e);
+            
+        
+
+        circle_marker_51b3db64a54a94c2fa90622d93dff633.bindPopup(popup_9f4375722c7a5f97aa1adcdfbf718d91)
+        ;
+
+        
+    
+    
+            circle_marker_51b3db64a54a94c2fa90622d93dff633.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 3.57%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a643db4fb4b797bdc73e7e05741b489 = L.circleMarker(
+                [18.704542857, 99.557743972],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_9b1f935ae559cfb9015adf5bd86ec5e1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f733d0550c4f1bc9c217ecae6460d04e = $(`<div id="html_f733d0550c4f1bc9c217ecae6460d04e" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 11<br>บัตรทั้งหมด: 10,880<br>บัตรเสีย: 493 (4.53%)<br>งดออกเสียง: 349 (3.21%)</div>`)[0];
+                popup_9b1f935ae559cfb9015adf5bd86ec5e1.setContent(html_f733d0550c4f1bc9c217ecae6460d04e);
+            
+        
+
+        circle_marker_6a643db4fb4b797bdc73e7e05741b489.bindPopup(popup_9b1f935ae559cfb9015adf5bd86ec5e1)
+        ;
+
+        
+    
+    
+            circle_marker_6a643db4fb4b797bdc73e7e05741b489.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 4.53%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b695d639e3282e4671bff1d9cab15a49 = L.circleMarker(
+                [18.712707473, 99.557374871],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_593a2ce3871c403f853f4f709d58d7e2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f6eff17d20066c2e22806391d0c48060 = $(`<div id="html_f6eff17d20066c2e22806391d0c48060" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 8<br>บัตรทั้งหมด: 11,200<br>บัตรเสีย: 541 (4.83%)<br>งดออกเสียง: 472 (4.21%)</div>`)[0];
+                popup_593a2ce3871c403f853f4f709d58d7e2.setContent(html_f6eff17d20066c2e22806391d0c48060);
+            
+        
+
+        circle_marker_b695d639e3282e4671bff1d9cab15a49.bindPopup(popup_593a2ce3871c403f853f4f709d58d7e2)
+        ;
+
+        
+    
+    
+            circle_marker_b695d639e3282e4671bff1d9cab15a49.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 4.83%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5382edd36826bdbcc66f7a0b8a4c31d6 = L.circleMarker(
+                [18.727587243, 99.561456984],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f1c40f", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_94dadce16ae99b09cc06751191c83453 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_62184e51adba71877a87395ac793fec9 = $(`<div id="html_62184e51adba71877a87395ac793fec9" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 720<br>บัตรเสีย: 20 (2.78%)<br>งดออกเสียง: 18 (2.5%)</div>`)[0];
+                popup_94dadce16ae99b09cc06751191c83453.setContent(html_62184e51adba71877a87395ac793fec9);
+            
+        
+
+        circle_marker_5382edd36826bdbcc66f7a0b8a4c31d6.bindPopup(popup_94dadce16ae99b09cc06751191c83453)
+        ;
+
+        
+    
+    
+            circle_marker_5382edd36826bdbcc66f7a0b8a4c31d6.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 2.78%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6db64f360ee7c34960fbf394b9d1c537 = L.circleMarker(
+                [18.744585145, 99.606309501],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_d8de00859067adffaf93f2dbf8a1de6d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_33a39234be11347e77f2740c02dd9f86 = $(`<div id="html_33a39234be11347e77f2740c02dd9f86" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 5,480<br>บัตรเสีย: 305 (5.57%)<br>งดออกเสียง: 344 (6.28%)</div>`)[0];
+                popup_d8de00859067adffaf93f2dbf8a1de6d.setContent(html_33a39234be11347e77f2740c02dd9f86);
+            
+        
+
+        circle_marker_6db64f360ee7c34960fbf394b9d1c537.bindPopup(popup_d8de00859067adffaf93f2dbf8a1de6d)
+        ;
+
+        
+    
+    
+            circle_marker_6db64f360ee7c34960fbf394b9d1c537.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.57%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0db7453ad9cfdec0e00497f4b598600d = L.circleMarker(
+                [18.756347115, 99.616866369],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_020eb18ea8f2873f9f40c29689995a7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b3cec7cb64f3af67845eb3b12afb4a7f = $(`<div id="html_b3cec7cb64f3af67845eb3b12afb4a7f" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 800<br>บัตรเสีย: 58 (7.25%)<br>งดออกเสียง: 41 (5.12%)</div>`)[0];
+                popup_020eb18ea8f2873f9f40c29689995a7f.setContent(html_b3cec7cb64f3af67845eb3b12afb4a7f);
+            
+        
+
+        circle_marker_0db7453ad9cfdec0e00497f4b598600d.bindPopup(popup_020eb18ea8f2873f9f40c29689995a7f)
+        ;
+
+        
+    
+    
+            circle_marker_0db7453ad9cfdec0e00497f4b598600d.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 7.25%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_661ed37137e10e935f671140eff35880 = L.circleMarker(
+                [18.784860023, 99.576933728],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_92fbe2b466ccf7cf607c6937624ee23a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2a87ddd35d39d4e059bccb8eb49f3f52 = $(`<div id="html_2a87ddd35d39d4e059bccb8eb49f3f52" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 10<br>บัตรทั้งหมด: 8,760<br>บัตรเสีย: 438 (5.0%)<br>งดออกเสียง: 238 (2.72%)</div>`)[0];
+                popup_92fbe2b466ccf7cf607c6937624ee23a.setContent(html_2a87ddd35d39d4e059bccb8eb49f3f52);
+            
+        
+
+        circle_marker_661ed37137e10e935f671140eff35880.bindPopup(popup_92fbe2b466ccf7cf607c6937624ee23a)
+        ;
+
+        
+    
+    
+            circle_marker_661ed37137e10e935f671140eff35880.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_83dd657866fef11c2fd32db1ddd71294 = L.circleMarker(
+                [18.803750775, 99.576449194],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_6c7e92a9feaadf274257cdff42a653c2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8b2ae69f6a028e51b35984a0e3f4a762 = $(`<div id="html_8b2ae69f6a028e51b35984a0e3f4a762" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 1,200<br>บัตรเสีย: 72 (6.0%)<br>งดออกเสียง: 32 (2.67%)</div>`)[0];
+                popup_6c7e92a9feaadf274257cdff42a653c2.setContent(html_8b2ae69f6a028e51b35984a0e3f4a762);
+            
+        
+
+        circle_marker_83dd657866fef11c2fd32db1ddd71294.bindPopup(popup_6c7e92a9feaadf274257cdff42a653c2)
+        ;
+
+        
+    
+    
+            circle_marker_83dd657866fef11c2fd32db1ddd71294.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 6.0%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2bb35be9f591ced2b095d08e2f619afc = L.circleMarker(
+                [18.815158828, 99.742683904],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_6a6e58968016f51cdcc0e347c63879cd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7767eeb650df388d529c506d98407177 = $(`<div id="html_7767eeb650df388d529c506d98407177" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 720<br>บัตรเสีย: 70 (9.72%)<br>งดออกเสียง: 26 (3.61%)</div>`)[0];
+                popup_6a6e58968016f51cdcc0e347c63879cd.setContent(html_7767eeb650df388d529c506d98407177);
+            
+        
+
+        circle_marker_2bb35be9f591ced2b095d08e2f619afc.bindPopup(popup_6a6e58968016f51cdcc0e347c63879cd)
+        ;
+
+        
+    
+    
+            circle_marker_2bb35be9f591ced2b095d08e2f619afc.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 9.72%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1232b13b2054c5ca8faf2147ffcc5755 = L.circleMarker(
+                [18.822992558, 99.57759376],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_b31ab17e039614065c1282a98a8b72e1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d495aa1a2e0840166d4fa2e51b6f2c36 = $(`<div id="html_d495aa1a2e0840166d4fa2e51b6f2c36" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 880<br>บัตรเสีย: 60 (6.82%)<br>งดออกเสียง: 20 (2.27%)</div>`)[0];
+                popup_b31ab17e039614065c1282a98a8b72e1.setContent(html_d495aa1a2e0840166d4fa2e51b6f2c36);
+            
+        
+
+        circle_marker_1232b13b2054c5ca8faf2147ffcc5755.bindPopup(popup_b31ab17e039614065c1282a98a8b72e1)
+        ;
+
+        
+    
+    
+            circle_marker_1232b13b2054c5ca8faf2147ffcc5755.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 6.82%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_25f0462c863480a7caf228b8da9ed597 = L.circleMarker(
+                [18.864475042, 99.730582654],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_953ca75b2cffc5110e91802160e29513 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ba7448b5ed9063a230007d11ba6d7457 = $(`<div id="html_ba7448b5ed9063a230007d11ba6d7457" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 1<br>บัตรทั้งหมด: 560<br>บัตรเสีย: 30 (5.36%)<br>งดออกเสียง: 13 (2.32%)</div>`)[0];
+                popup_953ca75b2cffc5110e91802160e29513.setContent(html_ba7448b5ed9063a230007d11ba6d7457);
+            
+        
+
+        circle_marker_25f0462c863480a7caf228b8da9ed597.bindPopup(popup_953ca75b2cffc5110e91802160e29513)
+        ;
+
+        
+    
+    
+            circle_marker_25f0462c863480a7caf228b8da9ed597.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.36%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ba13c4a0d1e76c6355a7b772d118ea3 = L.circleMarker(
+                [18.925834093, 99.661382603],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 1}
+            ).addTo(map_488aa40255522574bfed59ecf27a1ab1);
+        
+    
+        var popup_372317fe082a59d8b8b1fba8a577c79f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_979ad8e02255b1a1a759966154c57702 = $(`<div id="html_979ad8e02255b1a1a759966154c57702" style="width: 100.0%; height: 100.0%;"><b>แจ้ห่ม</b><br>จำนวนหน่วย: 7<br>บัตรทั้งหมด: 5,760<br>บัตรเสีย: 319 (5.54%)<br>งดออกเสียง: 156 (2.71%)</div>`)[0];
+                popup_372317fe082a59d8b8b1fba8a577c79f.setContent(html_979ad8e02255b1a1a759966154c57702);
+            
+        
+
+        circle_marker_2ba13c4a0d1e76c6355a7b772d118ea3.bindPopup(popup_372317fe082a59d8b8b1fba8a577c79f)
+        ;
+
+        
+    
+    
+            circle_marker_2ba13c4a0d1e76c6355a7b772d118ea3.bindTooltip(
+                `<div>
+                     แจ้ห่ม — บัตรเสีย 5.54%
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

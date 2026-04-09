@@ -1,0 +1,140 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1775721709186,
+  "projectRoot": "/Users/dewwts/lampang-area2-analyze",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "requirements.txt"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "pip",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "scripts",
+      "src"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "dashboard": {
+      "path": "dashboard",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775721709181,
+      "keyFiles": []
+    },
+    "data": {
+      "path": "data",
+      "purpose": "Data files",
+      "fileCount": 0,
+      "lastAccessed": 1775721709182,
+      "keyFiles": []
+    },
+    "dewwts-analyze": {
+      "path": "dewwts-analyze",
+      "purpose": null,
+      "fileCount": 9,
+      "lastAccessed": 1775721709182,
+      "keyFiles": [
+        "clean_data.ipynb",
+        "clean_data_executed.ipynb",
+        "explore_data.ipynb",
+        "explore_data_executed.ipynb",
+        "news_analysis_executed.ipynb"
+      ]
+    },
+    "ocr-result": {
+      "path": "ocr-result",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775721709182,
+      "keyFiles": []
+    },
+    "ocr-success-page": {
+      "path": "ocr-success-page",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775721709182,
+      "keyFiles": []
+    },
+    "page-ocr": {
+      "path": "page-ocr",
+      "purpose": null,
+      "fileCount": 99,
+      "lastAccessed": 1775721709183,
+      "keyFiles": [
+        "ชุด 6 ส.ส. 5-17 บช.txt",
+        "ชุด 6 ส.ส. 5-17.txt",
+        "ชุดที่ 1 ส.ส. 5-17(บช).txt",
+        "ชุดที่ 1 ส.ส. 5-17.txt",
+        "ชุดที่ 10 5-17(บช).txt"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 0,
+      "lastAccessed": 1775721709183,
+      "keyFiles": []
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 1,
+      "lastAccessed": 1775721709183,
+      "keyFiles": [
+        "Clean_validation.ipynb"
+      ]
+    },
+    "webfont": {
+      "path": "webfont",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1775721709183,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "dewwts-analyze/clean_data.ipynb",
+      "accessCount": 23,
+      "lastAccessed": 1775722240013,
+      "type": "directory"
+    },
+    {
+      "path": "dewwts-analyze/explore_data.ipynb",
+      "accessCount": 5,
+      "lastAccessed": 1775722590334,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
