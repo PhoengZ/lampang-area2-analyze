@@ -533,7 +533,6 @@ elif page == "9. DBSCAN Clustering":
         pivot[col] = pivot[col] / sum_unit
     pivot = pivot.dropna()
     pivot = pivot[(pivot <= 1.5).all(axis=1)]  # Remove anomalies
-
     # DBSCAN
     dbs = DBSCAN(eps=eps, min_samples=min_samples)
     pivot['cluster'] = dbs.fit_predict(pivot)
