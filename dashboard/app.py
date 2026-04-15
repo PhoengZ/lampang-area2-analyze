@@ -10,12 +10,14 @@ from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
 from sklearn.manifold import TSNE
 import os
+from correlate_page import correlation_volunteer
 
 st.set_page_config(page_title="Lampang Area 2 Election Dashboard", layout="wide", page_icon="🗳️")
 
 # --- Data Loading ---
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "dewwts-analyze", "cleaned")
 SOCIO_DIR = os.path.join(os.path.dirname(__file__), "..", "dewwts-analyze", "socioeconomic_data")
+DEFAULT_DIR = os.path.join(os.path.dirname(__file__), "..")
 
 @st.cache_data
 def load_data():
@@ -26,7 +28,10 @@ def load_data():
     cand_66 = pd.read_csv(os.path.join(DATA_DIR, "election66_candidate.csv"))
     pl_66 = pd.read_csv(os.path.join(DATA_DIR, "election66_partylist.csv"))
     socio = pd.read_csv(os.path.join(SOCIO_DIR, "tambon_socioeconomic_election.csv"))
-
+    osm = pd.read_csv(os.path.join(DEFAULT_DIR, "master_osmpertumbon.csv"))
+    results_phao = pd.read_csv(os.path.join(DEFAULT_DIR, "master_result_clean.csv"))
+    partynpeople = pd.read_csv(os.path.join(DEFAULT_DIR, "master_names_partynpeople.csv"))
+    summary_phao = pd.read_csv(os.path.join(DEFAULT_DIR, "master_summary_clean.csv"))
     # Name fixes for election data
     tambon_rename = {
         'บ้านหวอด': 'บ้านหวด',
@@ -38,9 +43,9 @@ def load_data():
     results['sub-district'] = results['sub-district'].replace(tambon_rename)
     summary['sub-district'] = summary['sub-district'].replace(tambon_rename)
 
-    return results, summary, coords, pop_age, cand_66, pl_66, socio
+    return results, summary, coords, pop_age, cand_66, pl_66, socio, osm, results_phao, partynpeople, summary_phao
 
-results, summary, coords, pop_age, cand_66, pl_66, socio = load_data()
+results, summary, coords, pop_age, cand_66, pl_66, socio, osm, results_phao, partynpeople,  summary_phao = load_data()
 
 PARTY_COLORS = {
     'ประชาชน': '#F4652A', 'เพื่อไทย': '#E0242B', 'กล้าธรรม': '#1651B5',
@@ -63,6 +68,7 @@ page = st.sidebar.radio("เลือกหน้า", [
     "7. Election 66 vs 69",
     "8. Aging Society vs Voting",
     "9. DBSCAN Clustering",
+    "10. Correlation between number of volunteer and election results"
 ])
 
 # =============================================================================
@@ -573,6 +579,10 @@ elif page == "9. DBSCAN Clustering":
         st.write(f"**{name}** ({len(cluster_data)} หน่วย)")
         st.dataframe(pd.DataFrame({'พรรค': top5.index, 'สัดส่วนเฉลี่ย': (top5.values * 100).round(1)}).reset_index(drop=True),
                     use_container_width=True)
+
+if page == "10. Correlation between number of volunteer and election results":
+    names = []
+    correlation_volunteer(results_phao, osm, summary_phao, partynpeople)
 
 # --- Footer ---
 st.sidebar.markdown("---")
