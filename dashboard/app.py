@@ -519,31 +519,30 @@ elif page == "8. Aging Society vs Voting":
 # =============================================================================
 elif page == "9. DBSCAN Clustering":
     st.title("DBSCAN Clustering")
-    st.markdown("Density-based clustering (จาก phao-analyze)")
+    st.markdown("Density-based clustering (จาก phao-analyze) (รวมการเลือกตั้งนอกเขตด้วย)")
 
     eps = st.sidebar.slider("eps", 0.1, 1.0, 0.3, 0.05)
     min_samples = st.sidebar.slider("min_samples", 3, 20, 10)
 
     # Prepare data same as phao-analyze
-    pl = results[results['type'] == 'บช'].copy()
-    cand = results[results['type'] == 'เขต'].copy()
-
-    all_names = results['name'].unique()
-    pivot = results.pivot_table(index=['district', 'sub-district', 'unit_number', 'type'],
-                                columns='name', values='score', aggfunc='sum', fill_value=0)
-    pivot = pivot.groupby(level=['district', 'sub-district', 'unit_number']).sum()
-
-    # Normalize by valid ballots
-    sum_unit = summary.groupby(['district', 'sub-district', 'unit_number'])['valid_ballots'].sum()
+    pl = results_phao[results_phao['type'] == 'บช'].copy()
+    cand = results_phao[results_phao['type'] == 'เขต'].copy()
+    people_names = partynpeople.loc[57:, 'Name'].tolist()
+    party_names = partynpeople.loc[:56, 'Name'].tolist()
+    all_names = results_phao['name'].unique()
+    pivot = results_phao.groupby(["district", "sub-district", "unit_number",'type', "name"])['score_clean'].sum().unstack("name")
+    pivot = pivot.fillna(0)
+    valid_ballots_series = summary_phao.groupby(['district', 'sub-district', 'unit_number','type'])['valid_ballots'].first()
+    pivot['valid_ball'] = valid_ballots_series
     for col in pivot.columns:
-        pivot[col] = pivot[col] / sum_unit
+        pivot[col] = pivot[col] / pivot['valid_ball']
     pivot = pivot.dropna()
     pivot = pivot[(pivot <= 1.5).all(axis=1)]  # Remove anomalies
-    # DBSCAN
+    df_final = pivot.groupby(level=['district', 'sub-district', 'unit_number']).sum()
     dbs = DBSCAN(eps=eps, min_samples=min_samples)
-    pivot['cluster'] = dbs.fit_predict(pivot)
-
-    cluster_counts = pivot['cluster'].value_counts().sort_index()
+    model = dbs.fit(df_final)
+    df_final['cluster'] = model.labels_
+    cluster_counts = df_final['cluster'].value_counts().sort_index()
     cluster_names = {-1: 'มันคือแป้ง (Outlier)', 0: 'ปกติ', 1: 'ประชาชนหวานเจี๊ยบ'}
 
     st.subheader("จำนวนหน่วยในแต่ละ Cluster")
@@ -551,19 +550,18 @@ elif page == "9. DBSCAN Clustering":
         name = cluster_names.get(c, f'Cluster {c}')
         st.write(f"**{name}**: {count} หน่วย")
 
-    # t-SNE visualization
-    if len(pivot) > 10:
+    if len(df_final) > 10:
         with st.spinner("กำลังคำนวณ t-SNE..."):
-            feature_cols = [c for c in pivot.columns if c != 'cluster']
-            tsne = TSNE(n_components=2, perplexity=min(30, len(pivot)-1), random_state=42)
-            tsne_result = tsne.fit_transform(pivot[feature_cols])
+            feature_cols = [c for c in df_final.columns if c != 'cluster']
+            tsne = TSNE(n_components=3, perplexity=min(30, len(df_final)-1), random_state=1)
+            tsne_result = tsne.fit_transform(df_final[feature_cols])
 
-            tsne_df = pd.DataFrame(tsne_result, columns=['x', 'y'])
-            tsne_df['cluster'] = pivot['cluster'].values
+            tsne_df = pd.DataFrame(tsne_result, columns=['x', 'y','z'])
+            tsne_df['cluster'] = df_final['cluster'].values
             tsne_df['cluster_name'] = tsne_df['cluster'].map(
                 lambda c: cluster_names.get(c, f'Cluster {c}'))
 
-            fig = px.scatter(tsne_df, x='x', y='y', color='cluster_name',
+            fig = px.scatter_3d(tsne_df, x='x', y='y',z='z', color='cluster_name',
                             title='t-SNE Visualization', opacity=0.7,
                             color_discrete_sequence=px.colors.qualitative.Set1)
             fig.update_layout(height=600)
@@ -571,17 +569,18 @@ elif page == "9. DBSCAN Clustering":
 
     # Top parties per cluster
     st.subheader("Top 5 พรรคในแต่ละ Cluster")
-    party_cols_bch = [n for n in pl['name'].unique() if n in pivot.columns]
-    for c in sorted(pivot['cluster'].unique()):
+    party_cols_bch = [n for n in pl['name'].unique() if n in df_final.columns]
+    for c in sorted(df_final['cluster'].unique()):
         name = cluster_names.get(c, f'Cluster {c}')
-        cluster_data = pivot[pivot['cluster'] == c]
-        top5 = cluster_data[party_cols_bch].mean().nlargest(5)
+        cluster_data = df_final[df_final['cluster'] == c]
+        top5_partys = cluster_data[party_cols_bch].mean().nlargest(5)
+        top5_people = cluster_data[people_names].mean().nlargest(5)
         st.write(f"**{name}** ({len(cluster_data)} หน่วย)")
-        st.dataframe(pd.DataFrame({'พรรค': top5.index, 'สัดส่วนเฉลี่ย': (top5.values * 100).round(1)}).reset_index(drop=True),
+        st.dataframe(pd.DataFrame({'พรรค': top5_partys.index, 'สัดส่วนเฉลี่ย': (top5_partys.values * 100).round(1)}).reset_index(drop=True),
                     use_container_width=True)
-
+        st.dataframe(pd.DataFrame({'ผู้สมัครสส. เขต': top5_people.index, 'สัดส่วนเฉลี่ย': (top5_people.values * 100).round(1)}).reset_index(drop=True),
+                    use_container_width=True)
 if page == "10. Correlation between number of volunteer and election results":
-    names = []
     correlation_volunteer(results_phao, osm, summary_phao, partynpeople)
 
 # --- Footer ---
