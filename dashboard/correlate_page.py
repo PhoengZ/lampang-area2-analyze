@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import os
+import plotly.express as px
 
 DEFAULT_PATH = os.path.join(os.path.dirname(__file__), "..", "phao-analyze")
 mpl.font_manager.fontManager.addfont(os.path.join(DEFAULT_PATH, "thsarabunnew-webfont.ttf"))
@@ -37,54 +37,69 @@ def correlation_volunteer(df_results, df_osm, df_summary, df_names):
     with tab1:
         choosing = st.multiselect("เลือกพรรคการเมือง (เลือกได้หลายพรรค)", party_names)
         if choosing:
-            fig, axs = plt.subplots(2, 1, figsize=(15, 20))
-            sns.heatmap(df_final[choosing + ["อสม_normalize"]].corr(), cmap='coolwarm', annot=True, ax=axs[0])
-            axs[0].set_title(f"Heatmap ความสัมพันธ์: พรรคการเมือง vs จำนวน อสม.")
+            corr_matrix = df_final[choosing + ["อสม_normalize"]].corr()
+            fig_heat = px.imshow(
+                corr_matrix,
+                text_auto=".2f",
+                aspect="auto",
+                color_continuous_scale="RdBu_r",
+                title="Heatmap ความสัมพันธ์: พรรคการเมือง vs จำนวน อสม."
+            )
+            st.plotly_chart(fig_heat, use_container_width=True)
 
-            for party in choosing:
-                sns.regplot(
-                    data=results_groupby, 
-                    x='อสม_normalize', 
-                    y=party,
-                    label=party,
-                    scatter_kws={'s': 40, 'alpha': 0.4},
-                    line_kws={'linewidth': 2},
-                    ax=axs[1] 
-                )
-            
-            axs[1].set_title("แนวโน้มคะแนนเลือกตั้งพรรคเทียบกับจำนวน อสม. (แบ่งตามตำบล)")
-            axs[1].set_xlabel("จำนวน อสม. ต่อประชากร 1000 คน")
-            axs[1].set_ylabel("สัดส่วนคะแนนที่ได้รับ")
-            axs[1].legend(loc='upper right')
-            
-            plt.tight_layout()
-            st.pyplot(fig)
+            df_melted_party = results_groupby.reset_index().melt(
+                id_vars=['sub-district', 'อสม_normalize'],
+                value_vars=choosing,
+                var_name='พรรคการเมือง',
+                value_name='สัดส่วนคะแนน'
+            )
+            fig_scatter = px.scatter(
+                df_melted_party,
+                x='อสม_normalize',
+                y='สัดส่วนคะแนน',
+                color='พรรคการเมือง',
+                trendline="ols",
+                hover_data=['sub-district'],
+                title="แนวโน้มคะแนนเลือกตั้งพรรคเทียบกับจำนวน อสม. (แบ่งตามตำบล)",
+                labels={'อสม_normalize': 'จำนวน อสม. ต่อประชากร 1000 คน'}
+            )
+            st.plotly_chart(fig_scatter, use_container_width=True)
         else:
-            st.write("กรุณาเลือกพรรคการเมืองอย่างน้อย 1 พรรค")
+            st.info("กรุณาเลือกพรรคการเมืองอย่างน้อย 1 พรรค")
     with tab2:
         choosing = st.multiselect("เลือกผู้สมัครคนใด (เลือกได้หลายคน)", people_names)
         if choosing:
-            fig, axs = plt.subplots(2, 1, figsize=(15, 20))
-            sns.heatmap(df_final[choosing + ["อสม_normalize"]].corr(), cmap='coolwarm', annot=True, ax=axs[0])
-            axs[0].set_title(f"Heatmap ความสัมพันธ์:ผู้สมัคร สส. vs จำนวน อสม.")
+            # 1. Plotly Heatmap
+            corr_matrix = df_final[choosing + ["อสม_normalize"]].corr()
+            fig_heat = px.imshow(
+                corr_matrix,
+                text_auto=".2f",
+                aspect="auto",
+                color_continuous_scale="RdBu_r",
+                title="Heatmap ความสัมพันธ์: ผู้สมัคร ส.ส. vs จำนวน อสม."
+            )
+            st.plotly_chart(fig_heat, use_container_width=True)
 
-            for people in choosing:
-                sns.regplot(
-                    data=results_groupby, 
-                    x='อสม_normalize', 
-                    y=people,
-                    label=people,
-                    scatter_kws={'s': 40, 'alpha': 0.4},
-                    line_kws={'linewidth': 2},
-                    ax=axs[1] 
-                )
-            
-            axs[1].set_title("แนวโน้มคะแนนเลือกตั้งสส.เขต เทียบกับจำนวน อสม. (แบ่งตามตำบล)")
-            axs[1].set_xlabel("จำนวน อสม. ต่อประชากร 1000 คน")
-            axs[1].set_ylabel("สัดส่วนคะแนนที่ได้รับ")
-            axs[1].legend(loc='upper right')
-            
-            plt.tight_layout()
-            st.pyplot(fig)
+            # 2. Plotly Scatter & Regression
+            df_melted_people = results_groupby.reset_index().melt(
+                id_vars=['sub-district', 'อสม_normalize'],
+                value_vars=choosing,
+                var_name='ผู้สมัคร',
+                value_name='สัดส่วนคะแนน'
+            )
+
+            fig_scatter = px.scatter(
+                df_melted_people,
+                x='อสม_normalize',
+                y='สัดส่วนคะแนน',
+                color='ผู้สมัคร',
+                trendline="ols",
+                hover_data=['sub-district'],
+                title="แนวโน้มคะแนนเลือกตั้ง ส.ส.เขต เทียบกับจำนวน อสม. (แบ่งตามตำบล)",
+                labels={'อสม_normalize': 'จำนวน อสม. ต่อประชากร 1000 คน'}
+            )
+            st.plotly_chart(fig_scatter, use_container_width=True)
         else:
-            st.write("กรุณาเลือกผู้สมัครอย่างน้อย 1 คน")
+            st.info("กรุณาเลือกผู้สมัครอย่างน้อย 1 คน")
+    
+    st.write(f"**ไม่มีตำบล บ้านใหม่ เนื่องจากไม่พบข้อมูลจำนวน อสม ของตำบลบ้านใหม่**")
