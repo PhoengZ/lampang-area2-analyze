@@ -17,7 +17,7 @@ st.set_page_config(page_title="Lampang Area 2 Election Dashboard", layout="wide"
 # --- Data Loading ---
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "dewwts-analyze", "cleaned")
 SOCIO_DIR = os.path.join(os.path.dirname(__file__), "..", "dewwts-analyze", "socioeconomic_data")
-DEFAULT_DIR = os.path.join(os.path.dirname(__file__), "..")
+DEFAULT_DIR = os.path.join(os.path.dirname(__file__), "..", "Data")
 
 @st.cache_data
 def load_data():
