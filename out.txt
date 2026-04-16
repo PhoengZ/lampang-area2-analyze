@@ -1,3 +1,0 @@
-
-        Convert to binary image stream of desired type.
-        
